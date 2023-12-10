@@ -1,13 +1,20 @@
 import React from 'react';
-import MyComponent from './MyComponent';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Layout from './pages/Layout';
+import Home from './pages/Home';
+import Contact from './pages/Contact';
 
 function App() {
   return (
-    <div className="bg-gradient-to-r from-purple-200 via-pink-200 to-white min-h-screen flex items-center justify-center">
-      <div className="text-center text-white">
-        <h1 className="text-5xl font-extrabold mb-6 text-purple-500">Hello, React!</h1>
-        <MyComponent />
-      </div>
+    <div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="contact" element={<Contact />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
